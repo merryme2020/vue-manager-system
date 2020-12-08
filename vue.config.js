@@ -6,8 +6,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        //引入全局文件
-        data: '@import "@/assets/scss/_variable.scss";'
+        prependData: '@import "@/assets/scss/_variable.scss";'
       }
     }
   }
