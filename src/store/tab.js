@@ -19,14 +19,15 @@ export default {
       //方式1:if else
       if (val.name !== 'home') {
         state.currentMenu = val
+        // 这里有个缺点，点击多次放多次( 进行去重操作),要先判断tabsList有没有这个val
+        // state.tabsList.push(val)
         /****
          * es6 findIndex()方法判断一下,这里面的item，它接收一个回调函数，回调函数的参数就是里面的项目
-         * 如果findIndex找不到项目，值为-1
+         * 如果findIndex找不到项目，返回值为-1
          */
         let result = state.tabsList.findIndex(item => item.name === val.name)
-        /*****
-         * 这里有个缺点，点击多次放多次( 进行去重操作)
-         * 判断resul是否等于-1，如果等于把值放进去，如果不等于不做任何操作
+        /**
+         * 判断result是否等于-1，如果等于把值放进去，如果不等于不做任何操作
          */
         result === -1 ? state.tabsList.push(val) : ''
       } else {
@@ -44,10 +45,8 @@ export default {
        *
        */
       let result = state.tabsList.findIndex(item => item.name === val.name)
-      /*****
+      /****
        * splice(result, 1)方法删除
-       *
-       *
        */
       state.tabsList.splice(result, 1)
     }

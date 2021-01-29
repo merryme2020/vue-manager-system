@@ -5,7 +5,8 @@
       <el-button type="primary" icon="el-icon-menu" size="mini"></el-button>
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item to="current.path" v-if="current">
+        <!--        使用v-if判断是否渲染标签-->
+        <el-breadcrumb-item :to="current.path" v-if="current">
           {{ current.label }}
         </el-breadcrumb-item>
       </el-breadcrumb>
@@ -13,7 +14,9 @@
     <!--    放user相关的-->
     <div class="r-content">
       <el-dropdown trigger="click" size="mini">
-        <span class="el-dropdown-link"><img :src="userImg" class="user"/></span>
+        <span class="el-dropdown-link">
+          <img :src="userImg" class="user" />
+        </span>
         <el-dropdown-menu slot="dropdown">
           <!--    显示两个下拉选项-->
           <el-dropdown-item>个人中心</el-dropdown-item>
@@ -25,11 +28,13 @@
 </template>
 
 <script>
+/** 引入vuex中mapState**/
 import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      current: state => state.tab.currentMenu
+      /** 使用es6扩展运算符**/
+      current: state => state.tab.currentMenu //通箭头函数进行引用，接收的是state参数
     })
   },
   data() {
@@ -66,8 +71,9 @@ header {
 }
 </style>
 
+<!--注意组件嵌套在组件里面的样式，不能写scoped-->
 <style lang="scss">
-/*sass集成写法*/
+/*scss继承写法*/
 .el-breadcrumb__item {
   .el-breadcrumb__inner {
     color: #fff;

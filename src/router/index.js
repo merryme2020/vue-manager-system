@@ -6,32 +6,32 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import('../views/Main.vue'), //懒加载
+    component: () => import('../views/Main'), //懒加载
     children: [
       {
         path: '/',
         name: 'home',
-        component: () => import('../views/Home/Home.vue')
+        component: () => import('../views/Home/Home')
       },
       {
         path: '/video',
         name: 'video',
-        component: () => import('../views/VideoManage/VideoManage.vue')
+        component: () => import('../views/VideoManage/VideoManage')
       },
       {
         path: '/user',
         name: 'user',
-        component: () => import('../views/UserManage/UserManage.vue')
+        component: () => import('../views/UserManage/UserManage')
       },
       {
         path: '/page1',
         name: 'page1',
-        component: () => import('../views/Other/PageOne.vue')
+        component: () => import('../views/Other/PageOne')
       },
       {
         path: '/page2',
         name: 'page2',
-        component: () => import('../views/Other/PageTwo.vue')
+        component: () => import('../views/Other/PageTwo')
       }
     ]
   }

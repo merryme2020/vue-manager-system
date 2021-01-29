@@ -37,7 +37,7 @@ export default {
   methods: {
     /***
      * 它就是一个辅助函数，可以接收一个数组或者对象作为参数
-     * 对象作为参数，可以改变在组件里面定义的属性最为存储
+     * 对象作为参数，可以改变在组件里面定义的属性做为存储
      */
     ...mapMutations({
       close: 'closeTab' //this.$store.commit()
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss">
-/**css语法 el-tag是tabs子集(在对应的{}括号里面表示子集)**/
+/**scss语法 el-tag是tabs子集(在对应的{}括号里面表示子集)**/
 .tabs {
   padding: 20px;
   .el-tag {
