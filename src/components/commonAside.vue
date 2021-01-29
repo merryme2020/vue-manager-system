@@ -35,6 +35,10 @@ export default {
   },
   methods: {
     clickMenu(item) {
+      /***
+       * 使用路由函数式编程
+       */
+      this.$router.push({ name: item.name })
       this.$store.commit('selectMenu', item) //把item传入vuex
     }
   },
