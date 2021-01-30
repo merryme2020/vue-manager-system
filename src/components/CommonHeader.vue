@@ -2,7 +2,7 @@
   <header>
     <!--    放面包屑导航-->
     <div class="l-content">
-      <el-button type="primary" icon="el-icon-menu" size="mini"></el-button>
+      <el-button plain icon="el-icon-menu" size="mini" @click="collapseMenu"></el-button>
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <!--        使用v-if判断是否渲染标签-->
@@ -41,6 +41,11 @@ export default {
     return {
       userImg: require('../assets/images/user.jpg') //js里面调用image标签使用require（）
     }
+  },
+  methods: {
+    collapseMenu() {
+      this.$store.commit('collapseMenu')
+    }
   }
 }
 </script>
@@ -76,11 +81,12 @@ header {
 /*scss继承写法*/
 .el-breadcrumb__item {
   .el-breadcrumb__inner {
-    color: #fff;
+    color: #666666; /*fff改为666666*/
+    font-weight: normal; /*字体去掉加粗*/
   }
   &:last-child {
     .el-breadcrumb__inner {
-      color: #f4f4f4;
+      color: #ffffff; /*ff4f4f4改为ffffff*/
     }
   }
 }

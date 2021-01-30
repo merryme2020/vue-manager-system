@@ -1,5 +1,5 @@
 <template>
-  <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#33aef0" text-color="#fff" active-text-color="#ffd04b">
+  <el-menu :collapse="isCollapse" default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
     <!--      通过v-for把菜单渲染出来，2中情况el-submenu和 el-menu-item-->
     <el-menu-item :index="item.path" v-for="item in noChildren" :key="item.path" @click="clickMenu(item)">
       <!-- 字符串拼接-->
@@ -35,6 +35,10 @@ export default {
     hasChildren() {
       //有children
       return this.asideMenu.filter(item => item.children)
+    },
+    //计算属性中取出vuex中的值
+    isCollapse() {
+      return this.$store.state.tab.isCollapse
     }
   },
   methods: {
@@ -57,7 +61,7 @@ export default {
           path: '/',
           name: 'home',
           label: '首页',
-          icon: 'home'
+          icon: 's-home'
         },
         {
           path: '/video',
@@ -100,5 +104,10 @@ export default {
 .el-menu {
   height: 100%;
   border: none;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
 }
 </style>

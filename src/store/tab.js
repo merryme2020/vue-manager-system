@@ -1,7 +1,8 @@
 export default {
   state: {
-    menu: [], //全部菜单，空数组
+    isCollapse: false, //默认不收缩
     currentMenu: null, //对象
+    menu: [], //全部菜单，空数组
     tabsList: [
       /***tabList默认有一个值是首页
        * 首页是不可关闭，一进来第一个页面是首页，它也是一个初始页面***/
@@ -49,6 +50,9 @@ export default {
        * splice(result, 1)方法删除
        */
       state.tabsList.splice(result, 1)
+    },
+    collapseMenu(state) {
+      state.isCollapse = !state.isCollapse
     }
   },
   actions: {}
