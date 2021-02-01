@@ -1,0 +1,21 @@
+.home {
+  .num {
+    //上层容器设置flex布局，自动把元素放到同一行，自动计算宽度
+    display: flex;
+    flex-wrap: wrap;
+    //设置水平对齐方式：两端对齐（左边靠在最左边，右边靠在最右边，中间放中间）
+    justify-content: space-between;
+    .el-card {
+      width: 32%;
+      margin-bottom: 20px;
+    }
+  }
+  .graph {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .el-card {
+      width: 48%;
+    }
+  }
+}
