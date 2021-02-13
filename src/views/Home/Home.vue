@@ -2,25 +2,40 @@
   <el-row class="home" :gutter="20">
     <!--  左边-->
     <el-col :span="8">
-      <!--      左边上面卡片-->
-      <el-card shadow="hover" style="height: 290px">
-        鼠标悬浮时显示
+      <!--      左边上面卡片，不定高度-->
+      <el-card shadow="hover">
+        <div class="user">
+          <!--左边：用户头像-->
+          <img :src="userImg" />
+          <!--右边：用户信息-->
+          <div class="userinfo">
+            <!--名字-->
+            <p class="name">yizhan</p>
+            <!--权限名字-->
+            <p class="access">超级管理员</p>
+          </div>
+        </div>
+        <div class="login-info">
+          <p>上次登录时间：<span>2021-2-10</span></p>
+          <p>上次登录地点：<span>北京</span></p>
+          <p></p>
+        </div>
       </el-card>
-      <!--      右边上面卡片-->
-      <el-card shadow="hover" style="height: 520px;margin-top: 20px">
-        鼠标悬浮时显示
-      </el-card>
+      <!--      左边下面卡片-->
+      <el-card shadow="hover" style="height: 520px;margin-top: 20px">鼠标悬浮时显示 </el-card>
     </el-col>
+
     <!--    右边-->
     <el-col :span="16">
       <div class="num">
-        <el-card shadow="hover" v-for="item in 6" :key="item">
-          <i class="icon"></i>
+        <el-card shadow="hover" v-for="item in countData" :key="item.name" :body-style="{ display: 'flex', padding: 0 }">
+          <!--          es6语法 ${item.icon}引用变量 进行字符串拼接-->
+          <i class="icon" :class="`el-icon-${item.icon}`" :style="{ background: item.color }"></i>
           <div class="detail">
             <!--            数字-->
-            <p class="num">￥ 1234</p>
+            <p class="num">￥ {{ item.value }}</p>
             <!--            文本-->
-            <p class="txt">今日支付订单</p>
+            <p class="txt">{{ item.name }}</p>
           </div>
         </el-card>
       </div>
@@ -41,6 +56,50 @@
 
 <script>
 export default {
+  data() {
+    return {
+      userImg: require('../../assets/images/user.jpg'), //使用变量当src的参数，写成require模式，才能识别成一个模块
+      countData: [
+        {
+          //图标，背景色，数字，文字
+          name: '今日支付订单',
+          value: '1234',
+          icon: 'success', //element图标进行删选
+          color: '#2ec7c9'
+        },
+        {
+          name: '今日收藏订单',
+          value: '210',
+          icon: 'star-on',
+          color: '#ffb980'
+        },
+        {
+          name: '今日未支付订单',
+          value: '1234',
+          icon: 's-goods',
+          color: '#5ab1ef'
+        },
+        {
+          name: '本月支付订单',
+          value: '1234',
+          icon: 'success',
+          color: '#2ec7c9'
+        },
+        {
+          name: '本月收藏订单',
+          value: '210',
+          icon: 'star-on',
+          color: '#ffb980'
+        },
+        {
+          name: '本月未支付订单',
+          value: '1234',
+          icon: 's-goods',
+          color: '#5ab1ef'
+        }
+      ]
+    }
+  },
   mounted() {
     //输出
     this.$http.get('/home/getData').then(res => {

@@ -1,19 +1,85 @@
 .home {
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;  //其作用就是 让class类为box的div盒子居中。盒 子居中了，盒子里面的元素就自然居中了
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-right: 40px;
+    }
+    //继承前面父类的类名 等同于.userinfo(拼接) ;&代表父级的类别或id
+    &info {
+      .name {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+      .access {
+        color: #999999;
+      }
+    }
+  }
+  .login-info {
+    p {
+      line-height: 28px;//行高
+      font-size: 14px;
+      color: #999999;
+      span {
+        color: #666666;
+        margin-left: 60px;
+      }
+    }
+}
+
   .num {
     //上层容器设置flex布局，自动把元素放到同一行，自动计算宽度
     display: flex;
     flex-wrap: wrap;
     //设置水平对齐方式：两端对齐（左边靠在最左边，右边靠在最右边，中间放中间）
     justify-content: space-between;
+
     .el-card {
       width: 32%;
       margin-bottom: 20px;
+      //方式1 穿透组件方式
+      // /deep/ .el-card__body {
+      //  display: flex;
+      //}
+    }
+    .icon {
+      font-size: 30px;
+      width: 80px;
+      height: 80px;
+      //传统实现方式
+      text-align: center; //水平居中
+      line-height: 80px; //垂直居中
+      color: #fff;
+    }
+    .detail {
+      margin-left: 15px;
+      display: flex; // 使用flex实现水平居中和垂直居中
+      flex-direction: column; //flex方向，给它设定垂直方向 （不设置垂直方向，默认水平展开）-column处置分布
+      justify-content: center; //垂直分布之后justify-content这个属性变为垂直，因为它主轴变了，这个是主轴对齐的方式，垂直的时候时候是垂直居中。
+      .num {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      .txt {
+        font-size: 14px;
+        text-align: center; // 设置文字水平居中
+        color: #999999;
+      }
     }
   }
   .graph {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+
     .el-card {
       width: 48%;
     }
