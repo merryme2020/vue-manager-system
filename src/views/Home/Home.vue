@@ -22,7 +22,11 @@
         </div>
       </el-card>
       <!--      左边下面卡片-->
-      <el-card shadow="hover" style="height: 520px;margin-top: 20px">鼠标悬浮时显示 </el-card>
+      <el-card shadow="hover" style="height: 520px;margin-top: 20px">
+        <el-table :data="tableData">
+          <el-table-column show-overflow-tooltip="true" v-for="(val, key) in tableLable" :key="key" :prop="key" :label="val"></el-table-column>
+        </el-table>
+      </el-card>
     </el-col>
 
     <!--    右边-->
@@ -97,14 +101,29 @@ export default {
           icon: 's-goods',
           color: '#5ab1ef'
         }
-      ]
+      ],
+      tableData: [],
+      tableLable: {
+        name: '课程',
+        todayBuy: '今日购买',
+        monthBuy: '本月购买',
+        totalBuy: '总购买'
+      }
     }
   },
-  mounted() {
-    //输出
-    this.$http.get('/home/getData').then(res => {
-      console.log(res.data)
-    })
+  methods: {
+    //定义方法获取表的数据
+    getTableData() {
+      //输出
+      this.$http.get('/home/getData').then(res => {
+        res = res.data
+        this.tableData = res.data.tableData
+      })
+    }
+  },
+  created() {
+    //节省dom渲染时间发送请求
+    this.getTableData()
   }
 }
 </script>
