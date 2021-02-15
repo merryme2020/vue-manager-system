@@ -123,7 +123,124 @@ export default {
             monthBuy: Mock.Random.float(1000, 9999, 0, 2),
             totalBuy: Mock.Random.float(100000, 1000000, 0, 2)
           }
-        ]
+        ],
+        orderData: {
+          data: [
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            },
+            {
+              vue: Mock.Random.float(100, 8000, 0, 2),
+              wechat: Mock.Random.float(100, 8000, 0, 2),
+              ES6: Mock.Random.float(100, 8000, 0, 2),
+              Redis: Mock.Random.float(100, 8000, 0, 2),
+              React: Mock.Random.float(100, 8000, 0, 2),
+              springboot: Mock.Random.float(100, 8000, 0, 2)
+            }
+          ],
+          date: ['20210211', '20210212', '20210213', '20210214', '20210215', '20210216', '20210217']
+        }
       }
     }
   }

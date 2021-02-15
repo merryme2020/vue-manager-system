@@ -24,7 +24,7 @@
       <!--      左边下面卡片-->
       <el-card shadow="hover" style="height: 520px;margin-top: 20px">
         <el-table :data="tableData">
-          <el-table-column show-overflow-tooltip="true" v-for="(val, key) in tableLable" :key="key" :prop="key" :label="val"></el-table-column>
+          <el-table-column show-overflow-tooltip v-for="(val, key) in tableLable" :key="key" :prop="key" :label="val"></el-table-column>
         </el-table>
       </el-card>
     </el-col>
@@ -44,14 +44,14 @@
         </el-card>
       </div>
       <el-card shadow="hover">
-        <div style="height: 280px"></div>
+        <echart style="height: 280px" :chartData="echartData.order"></echart>
       </el-card>
       <div class="graph">
         <el-card shadow="hover">
-          <div style="height: 260px"></div>
+          <echart style="height: 280px"></echart>
         </el-card>
         <el-card shadow="hover">
-          <div style="height: 260px"></div>
+          <echart style="height: 280px"></echart>
         </el-card>
       </div>
     </el-col>
@@ -59,7 +59,13 @@
 </template>
 
 <script>
+// 引入Echart组件
+import Echart from '../../components/Echart'
 export default {
+  //注册Echart组件
+  components: {
+    Echart
+  },
   data() {
     return {
       userImg: require('../../assets/images/user.jpg'), //使用变量当src的参数，写成require模式，才能识别成一个模块
@@ -108,6 +114,19 @@ export default {
         todayBuy: '今日购买',
         monthBuy: '本月购买',
         totalBuy: '总购买'
+      },
+      echartData: {
+        order: {
+          xData: [],
+          series: []
+        },
+        user: {
+          xData: [],
+          series: []
+        },
+        video: {
+          series: []
+        }
       }
     }
   },
@@ -118,6 +137,23 @@ export default {
       this.$http.get('/home/getData').then(res => {
         res = res.data
         this.tableData = res.data.tableData
+        // console.log(res.data)
+        //订单折线图
+        const order = res.data.orderData //取出orderData数据保存到变量中
+        //处理X轴数据
+        this.echartData.order.xData = order.date
+        console.log(this.echartData.order.xData)
+        //第一步取出series中的name部分-键名
+        let keyArray = Object.keys(order.data[0])
+        // console.log(keyArray)
+        //第二步循环键名的数组(keyArray),通过map()把对应的data返回
+        keyArray.forEach(key => {
+          this.echartData.order.series.push({
+            name: key === 'wechat' ? '小程序' : key, //处理
+            data: order.data.map(item => item[key]), // 取出这个item键名对应的值，放入数组中
+            type: 'line' //折线图
+          })
+        })
       })
     }
   },
