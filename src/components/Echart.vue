@@ -45,15 +45,15 @@ export default {
       echart: null,
       //有坐标轴的配置
       axisOption: {
-        xAxis: [
-          {
-            type: 'category',
-            data: []
-          }
-        ],
+        xAxis: {
+          type: 'category',
+          data: []
+        },
         yAxis: [
           {
-            type: 'value'
+            type: 'value',
+            axisLine: { show: true },
+            axisTick: { show: true }
           }
         ],
         series: []

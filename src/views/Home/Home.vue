@@ -142,7 +142,7 @@ export default {
         const order = res.data.orderData //取出orderData数据保存到变量中
         //处理X轴数据
         this.echartData.order.xData = order.date
-        console.log(this.echartData.order.xData)
+        // console.log(this.echartData.order.xData)
         //第一步取出series中的name部分-键名
         let keyArray = Object.keys(order.data[0])
         // console.log(keyArray)
