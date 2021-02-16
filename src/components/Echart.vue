@@ -85,7 +85,8 @@ export default {
         this.axisOption.xAxis.data = this.chartData.xData
         this.axisOption.series = this.chartData.series
       } else {
-        console.log('normal')
+        //如果没有坐标轴的图
+        this.normalOption.series = this.chartData.series
       }
     }
   }

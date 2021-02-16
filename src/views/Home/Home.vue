@@ -48,10 +48,10 @@
       </el-card>
       <div class="graph">
         <el-card shadow="hover">
-          <echart style="height: 280px"></echart>
+          <echart style="height: 280px" :chartData="echartData.user"></echart>
         </el-card>
         <el-card shadow="hover">
-          <echart style="height: 280px"></echart>
+          <echart style="height: 280px" :chartData="echartData.video"></echart>
         </el-card>
       </div>
     </el-col>
@@ -142,7 +142,7 @@ export default {
         const order = res.data.orderData //取出orderData数据保存到变量中
         //处理X轴数据
         this.echartData.order.xData = order.date
-        // console.log(this.echartData.order.xData)
+        console.log(this.echartData.order.xData)
         //第一步取出series中的name部分-键名
         let keyArray = Object.keys(order.data[0])
         // console.log(keyArray)
@@ -153,6 +153,24 @@ export default {
             data: order.data.map(item => item[key]), // 取出这个item键名对应的值，放入数组中
             type: 'line' //折线图
           })
+        })
+        //用户柱状图
+        console.log(res.data.userData)
+        this.echartData.user.xData = res.data.userData.map(item => item.date)
+        this.echartData.user.series.push({
+          name: '新增用户',
+          data: res.data.userData.map(item => item.new),
+          type: 'bar'
+        })
+        this.echartData.user.series.push({
+          name: '活跃用户',
+          data: res.data.userData.map(item => item.active),
+          type: 'bar'
+        })
+        //视频饼图
+        this.echartData.video.series.push({
+          data: res.data.videoData,
+          type: 'pie'
         })
       })
     }
