@@ -43,18 +43,53 @@ export default {
     return {
       //用来存放初始化的echart对象
       echart: null,
+
       //有坐标轴的配置
       axisOption: {
         xAxis: {
           type: 'category',
-          data: []
+          data: [],
+          axisLine: {
+            lineStyle: {
+              color: '#17b3a3'
+            }
+          },
+          axisTick: { show: false }
         },
         yAxis: [
           {
             type: 'value',
-            axisLine: { show: true },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#17b3a3'
+              }
+            },
             axisTick: { show: true }
           }
+        ],
+        //选择每个series的颜色，从数组里面寻找渲染颜色
+        color: [
+          '#2ec7c9',
+          '#b6a2de',
+          '#5ab1ef',
+          '#ffb980',
+          '#d87a80',
+          '#8d98b3',
+          '#e5cf0d',
+          '#97b552',
+          '#95706d',
+          '#dc69aa',
+          '#07a2a4',
+          '#9a7ad1',
+          '#588dd5',
+          '#f5994e',
+          '#c05050',
+          '#59678c',
+          '#c9ab00',
+          '#7eb00a',
+          '#6f5553',
+          '#c14089'
         ],
         series: []
       },
