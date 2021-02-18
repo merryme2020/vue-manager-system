@@ -44,14 +44,14 @@
         </el-card>
       </div>
       <el-card shadow="hover">
-        <echart style="height: 280px" :chartData="echartData.order"></echart>
+        <echart style="height: 280px" :isAxisChart="true" :chartData="echartData.order"></echart>
       </el-card>
       <div class="graph">
         <el-card shadow="hover">
-          <echart style="height: 280px" :chartData="echartData.user"></echart>
+          <echart style="height: 280px" :isAxisChart="true" :chartData="echartData.user"></echart>
         </el-card>
         <el-card shadow="hover">
-          <echart style="height: 280px" :chartData="echartData.video"></echart>
+          <echart style="height: 280px" :isAxisChart="false" :chartData="echartData.video"></echart>
         </el-card>
       </div>
     </el-col>
@@ -115,6 +115,7 @@ export default {
         monthBuy: '本月购买',
         totalBuy: '总购买'
       },
+      //定义echartData对象，里面装着所有图表数据
       echartData: {
         order: {
           xData: [],
@@ -142,7 +143,7 @@ export default {
         const order = res.data.orderData //取出orderData数据保存到变量中
         //处理X轴数据
         this.echartData.order.xData = order.date
-        console.log(this.echartData.order.xData)
+        // console.log(this.echartData.order.xData)
         //第一步取出series中的name部分-键名
         let keyArray = Object.keys(order.data[0])
         // console.log(keyArray)
@@ -168,6 +169,7 @@ export default {
           type: 'bar'
         })
         //视频饼图
+        console.log(res.data.videoData)
         this.echartData.video.series.push({
           data: res.data.videoData,
           type: 'pie'

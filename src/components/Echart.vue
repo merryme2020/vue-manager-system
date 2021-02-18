@@ -1,20 +1,21 @@
 <template>
+  <!--  通过ref找到dom-->
   <div style="height: 100%" ref="echart">
     echart
   </div>
 </template>
 
 <script>
-//引入echarts组件
-import * as echarts from 'echarts'
 export default {
   props: {
+    // chartData由父组件传递进来
     chartData: {
       type: Object,
       default() {
+        //设置对象默认值
         return {
-          xData: [],
-          series: []
+          xData: [], //类目轴
+          series: [] //y轴中的数据是通过series里面的data动态渲染出来的
         }
       }
     },
@@ -53,6 +54,9 @@ export default {
             lineStyle: {
               color: '#17b3a3'
             }
+          },
+          axisLabel: {
+            color: '#333'
           },
           axisTick: { show: false }
         },
@@ -100,6 +104,7 @@ export default {
       }
     }
   },
+  //定义方法渲染图表
   methods: {
     initChart() {
       //初始化图表之前先渲染数据
@@ -109,7 +114,7 @@ export default {
         this.echart.setOption(this.options) //存在不需要初始化，把配置还进来即可
       } else {
         //如果容器不存在
-        this.echart = echarts.init(this.$refs.echart)
+        this.echart = this.$echarts.init(this.$refs.echart) //取到组件进行初始化
         this.echart.setOption(this.options)
       }
     },

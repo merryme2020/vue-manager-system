@@ -11,6 +11,10 @@ import './mock'
 import ElementUI from 'element-ui'
 Vue.use(ElementUI)
 //挂载到Vue原型上
+// 引入 echarts 插件
+import * as echarts from 'echarts'
+// 配置成全局组件
+Vue.prototype.$echarts = echarts
 Vue.prototype.$http = http
 
 Vue.config.productionTip = false
