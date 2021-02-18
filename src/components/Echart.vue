@@ -48,7 +48,12 @@ export default {
       //有坐标轴的配置
       axisOption: {
         legend: {
-          textStyle: '#333'
+          textStyle: {
+            color: '#333'
+          }
+        },
+        grid: {
+          left: '20%'
         },
         tooltip: {
           trigger: 'axis'
@@ -108,6 +113,10 @@ export default {
 
       //没有坐标轴的配置
       normalOption: {
+        tooltip: {
+          trigger: 'item'
+        },
+        color: ['#0f78f4', '#dd536b', '#9462e5', '#a6a6a6', '#e1bb22', '#39c362', '#3ed1cf'],
         series: []
       }
     }
