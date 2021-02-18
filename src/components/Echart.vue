@@ -47,6 +47,12 @@ export default {
 
       //有坐标轴的配置
       axisOption: {
+        legend: {
+          textStyle: '#333'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
         xAxis: {
           type: 'category',
           data: [],
@@ -58,7 +64,9 @@ export default {
           axisLabel: {
             color: '#333'
           },
-          axisTick: { show: false }
+          axisTick: {
+            show: false
+          }
         },
         yAxis: [
           {
