@@ -30,6 +30,10 @@ export default {
   computed: {
     options() {
       return this.isAxisChart ? this.axisOption : this.normalOption
+    },
+    //获取isCollapse变量
+    isCollapse() {
+      return this.$store.state.tab.isCollapse
     }
   },
   watch: {
@@ -38,6 +42,13 @@ export default {
         this.initChart()
       },
       deep: true
+    },
+    //监听isCollapse属性
+    isCollapse() {
+      // 属性发生改变触发回调函数
+      setTimeout(() => {
+        this.resizeChart()
+      }, 300) //300ms之后触发回调函数
     }
   },
   data() {
@@ -145,7 +156,19 @@ export default {
         //如果没有坐标轴的图
         this.normalOption.series = this.chartData.series
       }
+    },
+    //对于图尺寸进行重新计算
+    resizeChart() {
+      this.echart ? this.echart.resize() : ''
     }
+  },
+  mounted() {
+    // 通过window.addEventListener注册事件
+    window.addEventListener('resize', this.resizeChart) //事件名称叫resize，监听到事件resize，触发回调函数
+  },
+  //mounted钩子里面注册事件，别忘记在destroyed销毁事件，避免内存泄露
+  destroyed() {
+    window.removeEventListener('resize', this.resizeChart)
   }
 }
 </script>
