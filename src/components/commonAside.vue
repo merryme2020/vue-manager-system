@@ -1,5 +1,7 @@
 <template>
   <el-menu :collapse="isCollapse" default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+    <h3 v-show="!isCollapse">驿站后台管理系统</h3>
+    <h3 v-show="isCollapse">驿站</h3>
     <!--      通过v-for把菜单渲染出来，2中情况el-submenu和 el-menu-item-->
     <el-menu-item :index="item.path" v-for="item in noChildren" :key="item.path" @click="clickMenu(item)">
       <!-- 字符串拼接-->
@@ -104,6 +106,11 @@ export default {
 .el-menu {
   height: 100%;
   border: none;
+  h3 {
+    color: #ffffff;
+    text-align: center;
+    line-height: 48px;
+  }
 }
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
