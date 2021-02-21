@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  //接收参数
   props: {
     // chartData由父组件传递进来
     chartData: {
@@ -51,6 +52,7 @@ export default {
       }, 300) //300ms之后触发回调函数
     }
   },
+  //定义参数
   data() {
     return {
       //用来存放初始化的echart对象

@@ -66,6 +66,7 @@ export default {
   components: {
     Echart
   },
+  //定义参数
   data() {
     return {
       userImg: require('../../assets/images/user.jpg'), //使用变量当src的参数，写成require模式，才能识别成一个模块
