@@ -22,11 +22,14 @@
 
 <script>
 export default {
+  //定义参数接收
   props: {
+    //是否横向表单
     inline: Boolean,
+    //表单，只对类型进行校验
     form: Object,
-    //表单项目 label、model绑定的字段、type
-    formLabel: []
+    //表单项目 json对象的参数：label、model绑定的字段（form里面绑定的字段）、type渲染成什么类型表单项
+    formLabel: Array //数组,里面是一个个json对象
   }
 }
 </script>
