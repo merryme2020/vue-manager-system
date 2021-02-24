@@ -8,7 +8,7 @@
       </common-form>
     </div>
 
-    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config"></common-table>
+    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList"></common-table>
   </div>
 </template>
 <script>
@@ -39,11 +39,13 @@ export default {
         },
         {
           prop: 'birth',
-          label: '出生日期'
+          label: '出生日期',
+          width: 200
         },
         {
           prop: 'addr',
-          label: '地址'
+          label: '地址',
+          width: 320
         }
       ],
       searchFrom: {
@@ -87,9 +89,13 @@ export default {
           this.config.loading = false
         })
     }
+    //注释掉
+    // changePage(val) {
+    //   console.log(val)
+    // }
   },
-  mounted() {
-    //使用create,dom可能没渲染完成
+  created() {
+    //使用create,dom可能没渲染完成,获取数据的速度会快一点
     this.getList()
   }
 }
