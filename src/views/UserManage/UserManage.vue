@@ -7,12 +7,10 @@
         <el-button type="primary">搜索</el-button>
       </common-form>
     </div>
-    <div class="manage-content">
-      <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config"></common-table>
-    </div>
+
+    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config"></common-table>
   </div>
 </template>
-
 <script>
 import CommonForm from '../../components/CommonForm'
 import CommonTable from '../../components/CommonTable'
@@ -91,6 +89,7 @@ export default {
     }
   },
   mounted() {
+    //使用create,dom可能没渲染完成
     this.getList()
   }
 }
