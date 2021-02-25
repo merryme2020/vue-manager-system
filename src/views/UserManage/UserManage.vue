@@ -1,5 +1,15 @@
 <template>
   <div class="manage">
+    <!--    引入Dialog对话框-->
+    <el-dialog :title="operateType === 'add' ? '新增用户' : '编辑用户'" :visible.sync="isShow">
+      <!--      引入表单-->
+      <common-form :formLabel="operateFormLabel" :form="operateForm"> </common-form>
+      <!--      插槽方式加入按钮-->
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="isShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirm">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="manage-header">
       <el-button type="primary">+ 新增</el-button>
       <!-- 直接循环formLabel绑定表单-->
@@ -8,7 +18,7 @@
       </common-form>
     </div>
 
-    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList"></common-table>
+    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList" @edit="editUser"></common-table>
   </div>
 </template>
 <script>
@@ -22,6 +32,8 @@ export default {
   data() {
     return {
       //定义参数
+      operateType: 'add', //默认为add
+      isShow: false, //默认为false
       tableData: [],
       tableLabel: [
         //通过循环tableLabel生成表格的列
@@ -46,6 +58,50 @@ export default {
           prop: 'addr',
           label: '地址',
           width: 320
+        }
+      ],
+      //设置操作表单
+      operateForm: {
+        //更新的字段名字,默认为空
+        name: '',
+        addr: '',
+        age: '',
+        birth: '',
+        sex: ''
+      },
+      operateFormLabel: [
+        {
+          model: 'name', //1.绑定的字段
+          Label: '姓名' //2. 表单描述
+        },
+        {
+          model: 'age', //1.绑定的字段
+          Label: '年龄' //2. 表单描述
+        },
+        {
+          model: 'sex',
+          Label: '性别',
+          type: 'select',
+          opts: [
+            //数组
+            {
+              label: '男',
+              value: 1
+            },
+            {
+              label: '女',
+              value: 0
+            }
+          ]
+        },
+        {
+          model: 'birth', //1.绑定的字段
+          Label: '日期', //2. 表单描述
+          type: 'date' //日期选择器设置type
+        },
+        {
+          model: 'addr', //1.绑定的字段
+          Label: '地址' //2. 表单描述
         }
       ],
       searchFrom: {
@@ -88,8 +144,25 @@ export default {
           this.config.total = res.data.count
           this.config.loading = false
         })
+    },
+    //输出row
+    editUser(row) {
+      this.operateType = 'edit' //设置操作类型为edit
+      this.isShow = true //设置显示dialog
+      // console.log(row)
+      this.operateForm = row //点击更新operateForm要设置成row里面参数
+    },
+    confirm() {
+      if (this.operateType === 'edit') {
+        //确认提交操作
+        this.$http.post('api/user/edit', this.operateForm).then(res => {
+          console.log(res.data)
+          this.isShow = false
+          this.getList()
+        })
+      }
     }
-    //注释掉
+    //输出点击的翻页的页数
     // changePage(val) {
     //   console.log(val)
     // }
