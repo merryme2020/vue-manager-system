@@ -18,7 +18,7 @@
       </common-form>
     </div>
 
-    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList" @edit="editUser"></common-table>
+    <common-table :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList" @edit="editUser" @del="delUser"></common-table>
   </div>
 </template>
 <script>
@@ -161,6 +161,35 @@ export default {
           this.getList()
         })
       }
+    },
+    delUser(row) {
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          let id = row.id
+          this.$http
+            .get('/api/user/del', {
+              params: {
+                id
+              }
+            })
+            .then(res => {
+              console.log(res.data)
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              })
+            })
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
     }
     //输出点击的翻页的页数
     // changePage(val) {
